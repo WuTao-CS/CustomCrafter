@@ -1,14 +1,15 @@
-<div align="center">
-
 # ✨CustomCrafter✨
-
-**CustomCrafter: Customized Video Generation with Preserving Motion and Concept Composition Abilities**
-
 <div align="center">
+
+CustomCrafter: Customized Video Generation with Preserving Motion and Concept Composition Abilities
+
+
 <img src='./assets/logo.png' style="height:256px"></img>
 
 
-<a href='https://arxiv.org/abs/2408.13239'><img src='https://img.shields.io/badge/ArXiv-2408.13239-red'></a> &nbsp;&nbsp;&nbsp;&nbsp;<a href='https://customcrafter.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a> 
+<a href='https://arxiv.org/abs/2408.13239'><img src='https://img.shields.io/badge/ArXiv-2408.13239-red'></a> &nbsp;
+<a href='https://customcrafter.github.io/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>  &nbsp;
+
 </div>
 
 
