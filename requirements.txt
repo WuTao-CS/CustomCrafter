@@ -1,0 +1,26 @@
+decord
+einops
+imageio
+numpy
+omegaconf
+opencv_python
+pandas
+Pillow
+pytorch_lightning==1.9.2
+setuptools
+torch
+torchvision
+tqdm
+transformers
+moviepy
+av
+xformers
+gradio
+timm
+scikit-learn 
+open_clip_torch
+kornia
+fairscale
+deepspeed
+# -e .
+# moviepy
