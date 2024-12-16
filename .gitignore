@@ -17,3 +17,4 @@ prompts/*
 pyrightconfig.json
 eval/RAFT/models/*
 rebuttal/*
+bash/*
