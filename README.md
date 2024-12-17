@@ -1,6 +1,7 @@
+<div align="center">
+
 # ✨CustomCrafter✨
 
-<div align="center">
 <p><b>CustomCrafter: Customized Video Generation with Preserving Motion and Concept Composition Abilities</b>.</p>
 
 <img src='./assets/logo.png' style="height:256px"></img>
@@ -35,7 +36,6 @@ wget https://huggingface.co/VideoCrafter/VideoCrafter2/resolve/main/model.ckpt -
 
 Prepare regularization data
 We provide two ways to obtain regularized image data.
-Because LAION dataset is no longer available, referring to [this](https://github.com/huggingface/diffusers/issues/6880).
 One is to find real images from the LAION dataset as regularization data, but since the LAION dataset is temporarily unavailable(referring to [this](https://github.com/huggingface/diffusers/issues/6880)), it may not work properly.
 The other is to use Stable Diffusion2.1 to generate images as regularization data.
 
