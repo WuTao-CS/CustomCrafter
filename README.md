@@ -45,7 +45,7 @@ pip install clip-retrieval
 python retrieve.py --class_prompt "cat" --class_data_dir 'datasets/real_reg/samples_cat/' --num_class_images 200
 
 # Generated images as regularization data
-python sample_reg.py --prompt "a photo of a cat" -outdir 'datasets/real_reg/samples_cat/' --num 200
+python sample_reg.py --prompt "a photo of a cat" --outdir 'datasets/real_reg/samples_cat/' --num 200
 
 ```
 
