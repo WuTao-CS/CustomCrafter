@@ -51,6 +51,7 @@ class LoRaCrossAttenDiffusion(CustomDiffusion):
                  inject_init_attn=True,
                  inject_ffn=False,
                  only_attn2=False,
+                 inject_ta=False,
                  *args, **kwargs
                  ):
         # init & load pretrained
@@ -67,6 +68,7 @@ class LoRaCrossAttenDiffusion(CustomDiffusion):
         self.update_keys = update_keys
         self.inject_init_attn = inject_init_attn
         self.inject_ffn = inject_ffn
+        self.inject_ta = inject_ta
         self.only_attn2 = only_attn2
         self._freeze_model()
         # self._inject_lora()
@@ -104,7 +106,8 @@ class LoRaCrossAttenDiffusion(CustomDiffusion):
                                                                                         module_child_name=self.inject_unet_child_name,
                                                                                         inject_init_attn=self.inject_init_attn,
                                                                                         inject_ffn=self.inject_ffn,
-                                                                                        only_attn2=self.only_attn2
+                                                                                        only_attn2=self.only_attn2,
+                                                                                        inject_ta=self.inject_ta,
                                                                                         )
         if self.inject_clip:
             self.lora_require_grad_params_clip, self.lora_names_clip = lora.inject_trainable_lora(self.cond_stage_model, 

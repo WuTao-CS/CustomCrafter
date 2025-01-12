@@ -32,6 +32,7 @@ model:
     inject_init_attn: False
     inject_ffn: false
     inject_clip_key_word: null
+    inject_ta: False
     # joint train
     # joint_train: true
     text_model_type: openclip

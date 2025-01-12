@@ -662,6 +662,8 @@ if __name__ == "__main__":
                 for modifier_id, initializer_id in zip(model.cond_stage_model.modifier_token_id, model.cond_stage_model.initializer_token_id):
                     model.cond_stage_model.model.token_embedding.weight.data[modifier_id] = token_weights[initializer_id]
             del st
+        
+        print(model)
         # trainer and callbacks
         trainer_kwargs = dict()
         default_logger_cfgs = {

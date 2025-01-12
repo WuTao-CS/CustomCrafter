@@ -157,7 +157,7 @@ class LoraInjectedConv2d(nn.Module):
 
 UNET_DEFAULT_TARGET_REPLACE = {"MemoryEfficientCrossAttention","CrossAttention", "Attention", "GEGLU"}
 
-UNET_EXTENDED_TARGET_REPLACE = {"TimestepEmbedSequential","SpatialTemporalTransformer", "MemoryEfficientCrossAttention","CrossAttention", "Attention", "GEGLU"}
+UNET_EXTENDED_TARGET_REPLACE = {"TimestepEmbedSequential","SpatialTransformer", "MemoryEfficientCrossAttention","CrossAttention", "Attention", "GEGLU"}
 
 TEXT_ENCODER_DEFAULT_TARGET_REPLACE = {"CLIPAttention"}
 
@@ -197,6 +197,7 @@ def _find_modules_v2(
     inject_init_attn: bool = True,
     inject_ffn: bool = False,
     only_attn2: bool = False,
+    inject_ta: bool = False,
 ):
     """
     Find all modules of a certain class (or union of classes) that are direct or
@@ -223,8 +224,7 @@ def _find_modules_v2(
         else:
             ancestors = []
             for name, module in model.named_modules():
-                # print(module.__class__.__name__)
-                if module.__class__.__name__ in ancestor_class and 'init_attn' not in name:
+                if module.__class__.__name__ in ancestor_class and 'init_attn' not in name and (inject_ta or '.2.transformer_blocks.' not in name):
                     if module.__class__.__name__ == "FeedForward" and inject_ffn:
                         ancestors.append(module.net)
                     elif module.__class__.__name__ == "CrossAttention":
@@ -296,6 +296,7 @@ def inject_trainable_lora(
     module_child_name: List[str] = None,
     inject_init_attn: bool = True,
     inject_ffn: bool = False,
+    inject_ta: bool = False,
     only_attn2: bool = False,
 ):
     """
@@ -309,7 +310,7 @@ def inject_trainable_lora(
         loras = torch.load(loras)
 
     for _module, name, _child_module in _find_modules(
-        model, target_replace_module, search_class=[nn.Linear], module_child_name=module_child_name, inject_init_attn=inject_init_attn, inject_ffn=inject_ffn, only_attn2=only_attn2
+        model, target_replace_module, search_class=[nn.Linear], module_child_name=module_child_name, inject_init_attn=inject_init_attn, inject_ffn=inject_ffn, only_attn2=only_attn2, inject_ta=inject_ta,
     ):
         weight = _child_module.weight
         bias = _child_module.bias
